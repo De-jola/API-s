@@ -1,6 +1,9 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const bookApp = express();
 bookApp.use(express.json());
+bookApp.use(bodyParser.urlencoded({ extended: true }));
+bookApp.use(bodyParser.json());
 //Database
 const database = require("./database");
 
@@ -164,6 +167,49 @@ bookApp.get("/publications/book/:isbn", (req, res) => {
     });
   }
   return res.json({ publication: getPublication });
+});
+
+//POST
+
+/*
+Route               /book/new
+Description         Add new books
+Access              Public
+Parameter           none
+Methods             POST
+*/
+
+bookApp.post("/book/new", (req, res) => {
+  const newBook = req.body;
+  database.books.push(newBook);
+  return res.json({ updatedBook: database.books });
+});
+
+/*
+Route               /authors/new
+Description         Add new authors
+Access              Public
+Parameter           none
+Methods             POST
+*/
+
+bookApp.post("/author/new", (req, res) => {
+  const newAuthor = req.body;
+  database.author.push(newAuthor);
+  return res.json({ updatedAuthor: database.author });
+});
+
+/*
+Route               /publication/new
+Description         Add new authors
+Access              Public
+Parameter           none
+Methods             POST
+*/
+bookApp.post("/publication/new", (req, res) => {
+  const newPublication = req.body;
+  database.publication.push(newPublication);
+  return res.json({ updatedPublication: database.publication });
 });
 
 bookApp.listen(3000, () => {

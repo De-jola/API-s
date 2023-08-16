@@ -28,3 +28,8 @@
 //An API to get publications - DONE
 //An API to get specific publication -DONE
 //Get list of publications - DONE
+
+//POST REQUEST
+//Add new book -DONE
+//Add new publication
+//Add new author

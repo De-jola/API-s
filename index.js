@@ -211,6 +211,36 @@ bookApp.post("/publication/new", (req, res) => {
   database.publication.push(newPublication);
   return res.json({ updatedPublication: database.publication });
 });
+/*
+Route               /publication/update/book
+Description         Update/add new publication
+Access              Public
+Parameter           isbn
+Methods             PUT
+*/
+
+bookApp.put("/publication/update/book/:isbn", (req, res) => {
+  //Update publication database
+  database.publication.forEach((pub) => {
+    if (pub.id === req.body.pubId) {
+      return pub.books.push(req.params.isbn);
+    }
+  });
+  //Update the book database
+
+  database.books.forEach((book) => {
+    if (book.ISBN === req.params.isbn) {
+      book.publications = req.body.pubId;
+      return;
+    }
+  });
+
+  return res.json({
+    books: database.books,
+    publications: database.publication,
+    message: "Successfully updated publications",
+  });
+});
 
 bookApp.listen(3000, () => {
   console.log("Server is up and running");

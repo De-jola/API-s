@@ -33,3 +33,12 @@
 //Add new book -DONE
 //Add new publication
 //Add new author
+
+//PUT
+//Update book details if author is changed -DONE
+//
+
+// DELETE
+// 1. Delete a Book
+// 2. Delete author from book
+// 3. Delete author from book & related book from author

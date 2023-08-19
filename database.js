@@ -16,7 +16,7 @@ const books = [
     language: "en",
     numPage: 300,
     author: [3],
-    publications: [1],
+    publications: [2],
     category: ["true story", "novel", "inspirational"],
   },
 ];
@@ -48,6 +48,11 @@ const publication = [
     id: 2,
     name: "booksandall",
     books: ["Tales by sunrise", "445gtexr"],
+  },
+  {
+    id: 3,
+    name: "bookies",
+    books: [],
   },
 ];
 
